@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String[] items ={"젤리빈","킷켓","롤리팝"};
     boolean[] checkAr ={false, true, false};
     Button but;
+    int i=0;
+    String but_text="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,9 +33,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AlertDialog.Builder dialog=new AlertDialog.Builder(this);
         dialog.setTitle("First Dialog");
-        dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
+        /*dialog.setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int which){
                 but.setText(items[which]);
+            }
+        });*/
+        dialog.setMultiChoiceItems(items, checkAr, new DialogInterface.OnMultiChoiceClickListener() {
+            public void onClick(DialogInterface dialog, int which,boolean isChecked){
+                for(int i=0;i<3;i++) {
+                    if (checkAr[i] == true) {
+                        but_text+=items[i]+" ";
+                        //but.setText(items[i]);
+                    }
+                    else{but_text+=" ";}
+                }
+                but.setText(but_text);
             }
         });
         dialog.setIcon(R.drawable.first_icon);

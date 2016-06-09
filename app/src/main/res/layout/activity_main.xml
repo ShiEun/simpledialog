@@ -13,7 +13,7 @@
 
     <Button
         android:id="@+id/but_dialog"
-        android:layout_width="wrap_content"
+        android:layout_width="332dp"
         android:layout_height="wrap_content"
         android:text="@string/but_text" />
 </LinearLayout>
